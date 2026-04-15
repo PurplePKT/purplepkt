@@ -1,0 +1,71 @@
+Build a very simple, clean one-page business website for my company “Purple Pocket” that I can publish on my purplepkt domain and use as public-facing brand evidence.
+
+Goal:
+Create a basic professional website that clearly shows Purple Pocket is a real business offering mail transportation, delivery, logistics, and pack-and-ship related services. Keep it simple, polished, and easy to launch fast.
+
+Brand details:
+- Business name: Purple Pocket
+- Legal entity: Purple Pocket LLC
+- Domain: purplepkt domain
+- Primary brand color theme: purple
+- Style: modern, trustworthy, minimal, professional
+- Mobile-friendly: yes
+- Must look like a real small business website, not a tech startup demo
+
+Pages/sections needed:
+1. Hero section
+   - Large heading: “Purple Pocket”
+   - Short subheading explaining that Purple Pocket provides transportation, delivery, logistics, and pack-and-ship support services
+   - A button: “Request Services”
+   - A button: “Contact Us”
+
+2. About section
+   - Brief paragraph introducing Purple Pocket as a logistics and service business operated by Purple Pocket LLC
+   - Mention reliable transportation, delivery coordination, and customer-focused service
+
+3. Services section
+   Include cards or sections for:
+   - Mail Transportation & Delivery Services
+   - Logistics Support Services
+   - Route Operations Support
+   - Pack-and-Ship Service Support
+   - Business Service Coordination
+
+4. Contact section
+   - Business name: Purple Pocket LLC
+   - Email: govtcontracting@purplepocket.com
+   - Address: 1509 US HWY 59 S, Linden, TX 75563
+   - Add a basic contact form with name, email, and message fields
+   - The form can be non-functional for now, but should look real
+
+5. Footer
+   - “© 2026 Purple Pocket LLC. All rights reserved.”
+   - Small line: “Purple Pocket is a logistics and service brand operated by Purple Pocket LLC.”
+
+Important legal/branding goals:
+- The website must clearly display “Purple Pocket” at the top
+- The site must clearly show real business services being offered
+- Include wording such as:
+  “Purple Pocket provides mail transportation, delivery, logistics, and service support solutions.”
+- This site is meant to serve as a public-facing business website for branding and trademark support, so the service descriptions should be clear and professional
+- Do not mention trademark or legal proof anywhere on the website
+
+Technical requirements:
+- Use simple HTML/CSS/JavaScript, or a very lightweight framework if needed
+- Keep it easy to edit later
+- Fast loading
+- Responsive design
+- Clean layout with good spacing
+- Use system fonts or common web-safe fonts
+- Include placeholder logo text for now if no logo file is provided
+- Add clear page title and meta description for Purple Pocket
+
+SEO/meta:
+- Title tag: Purple Pocket | Transportation, Delivery & Logistics Services
+- Meta description: Purple Pocket provides mail transportation, delivery, logistics, and pack-and-ship support services.
+
+Extra request:
+Please generate:
+1. The full website code
+2. A short explanation of where to edit text later
+3. Instructions for how to publish it on my custom purplepkt domain in Replit

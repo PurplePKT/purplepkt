@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Purple Pocket"
+version = "1.0.0"
+id = "artifacts/purple-pocket"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22492
+
+[services.development]
+run = "pnpm --filter @workspace/purple-pocket run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/purple-pocket", "run", "build" ]
+publicDir = "artifacts/purple-pocket/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22492"
+BASE_PATH = "/"
