@@ -4,20 +4,21 @@ import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 
 export default defineConfig({
-  base: "/",
-  plugins: [
-    react(),
-    tailwindcss(),
-  ],
+  base: "/", // correct for custom domain
+
+  plugins: [react(), tailwindcss()],
+
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "src"),
     },
     dedupe: ["react", "react-dom"],
   },
+
   root: path.resolve(import.meta.dirname),
+
   build: {
-    outDir: path.resolve(import.meta.dirname, "dist/public"),
+    outDir: path.resolve(import.meta.dirname, "dist"), // 🔥 FIXED
     emptyOutDir: true,
   },
 });
