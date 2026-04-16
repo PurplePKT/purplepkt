@@ -66,10 +66,15 @@ export default function Home() {
   });
 
   const onSubmit = (values: z.infer<typeof contactFormSchema>) => {
+    const subject = encodeURIComponent("New Inquiry from Website");
+    const body = encodeURIComponent(
+      `Name: ${values.name}\nEmail: ${values.email}\n\nMessage:\n${values.message}`
+    );
+    window.location.href = `mailto:support@purplepkt.com?subject=${subject}&body=${body}`;
     toast({
-      title: "Message Sent",
+      title: "Opening Email Client",
       description:
-        "Thank you for reaching out. We will get back to you shortly.",
+        "Your message has been prepared. Please send it from your email client.",
     });
     form.reset();
   };
@@ -360,41 +365,13 @@ export default function Home() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="relative"
+                className="flex items-center justify-center"
               >
-                <div className="rounded-2xl border border-border bg-muted/30 shadow-xl p-8 space-y-6">
-                  <div className="flex items-center gap-3 pb-6 border-b border-border">
-                    <img
-                      src="/images/logo.png"
-                      alt="Purple Pocket Logo"
-                      className="h-12 w-auto"
-                    />
-                    <div>
-                      <div className="font-serif font-bold text-lg text-foreground">Purple Pocket LLC</div>
-                      <div className="text-sm text-muted-foreground">East Texas, USA</div>
-                    </div>
-                  </div>
-                  <div className="space-y-4">
-                    {[
-                      { icon: Mail, label: "Mail Transportation & Delivery" },
-                      { icon: Truck, label: "Logistics Support Services" },
-                      { icon: Map, label: "Route Operations Support" },
-                      { icon: Package, label: "Pack-and-Ship Service Support" },
-                      { icon: BriefcaseBusiness, label: "Business Service Coordination" },
-                    ].map(({ icon: Icon, label }) => (
-                      <div key={label} className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center text-primary shrink-0">
-                          <Icon className="w-4 h-4" />
-                        </div>
-                        <span className="text-sm font-medium text-foreground">{label}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="pt-6 border-t border-border text-xs text-muted-foreground space-y-1">
-                    <p className="font-medium">1509 US HWY 59 S, Linden, TX 75563</p>
-                    <p>govtcontracting@purplepocket.com</p>
-                  </div>
-                </div>
+                <img
+                  src="/images/logo2.png"
+                  alt="Purple Pocket"
+                  className="w-full h-auto object-contain rounded-xl"
+                />
               </motion.div>
             </div>
           </div>
@@ -453,10 +430,10 @@ export default function Home() {
                     <div>
                       <h4 className="font-medium text-lg mb-1">Email</h4>
                       <a
-                        href="mailto:govtcontracting@purplepocket.com"
+                        href="mailto:support@purplepkt.com"
                         className="text-primary-foreground/70 hover:text-white transition-colors"
                       >
-                        govtcontracting@purplepocket.com
+                        support@purplepkt.com
                       </a>
                     </div>
                   </div>

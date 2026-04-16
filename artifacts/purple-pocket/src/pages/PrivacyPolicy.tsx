@@ -172,10 +172,10 @@ export default function PrivacyPolicy() {
               <p>1509 US HWY 59 S, Linden, TX 75563</p>
               <p>
                 <a
-                  href="mailto:govtcontracting@purplepocket.com"
+                  href="mailto:support@purplepkt.com"
                   className="text-primary hover:underline"
                 >
-                  govtcontracting@purplepocket.com
+                  support@purplepkt.com
                 </a>
               </p>
             </div>
