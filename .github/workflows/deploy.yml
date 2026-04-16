@@ -33,12 +33,10 @@ jobs:
           version: 9
 
       - name: Install dependencies
-        working-directory: artifacts/purple-pocket
         run: pnpm install --no-frozen-lockfile
 
-      - name: Build site
-        working-directory: artifacts/purple-pocket
-        run: pnpm run build
+      - name: Build site for GitHub Pages
+        run: pnpm --filter @workspace/purple-pocket run build:github
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
