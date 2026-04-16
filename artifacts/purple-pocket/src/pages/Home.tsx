@@ -133,7 +133,6 @@ export default function Home() {
               src="/images/logo.png"
               alt="Purple Pocket Logo"
               className="h-10 w-auto"
-              style={{ mixBlendMode: "multiply" }}
             />
             <span
               className={`font-serif font-bold text-xl tracking-tight transition-colors ${
@@ -368,7 +367,6 @@ export default function Home() {
                       src="/images/logo.png"
                       alt="Purple Pocket Logo"
                       className="h-12 w-auto"
-                      style={{ mixBlendMode: "multiply" }}
                     />
                     <div>
                       <div className="font-serif font-bold text-lg text-foreground">Purple Pocket LLC</div>
@@ -573,7 +571,6 @@ export default function Home() {
                 src="/images/logo.png"
                 alt="Purple Pocket Logo"
                 className="h-10 w-auto"
-                style={{ filter: "brightness(0) invert(1)" }}
               />
               <span className="font-serif font-bold text-xl text-white">
                 Purple Pocket
