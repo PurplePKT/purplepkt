@@ -1,0 +1,60 @@
+Please update this Purple Pocket website to make it more USPTO-ready as a real business website for trademark support.
+
+Goals:
+1. Make the site look like a real operating business offering services in commerce
+2. Keep the design clean, modern, and professional
+3. Replace placeholder/demo-looking visuals with real business-oriented content
+4. Use my custom logo from /images/logo.png everywhere the current icon/logo appears
+5. If there is a white background, border, card, or container behind the logo caused by styling, remove it so the logo appears cleanly on the page
+6. If the white background is baked into the image itself, tell me that the file needs a transparent PNG instead of trying to fake it badly
+
+Brand and business details:
+- Brand name: Purple Pocket
+- Legal entity: Purple Pocket LLC
+- Business email: govtcontracting@purplepocket.com
+- Address: 1509 US HWY 59 S, Linden, TX 75563
+- Domain: purplepkt
+- Purple Pocket provides mail transportation, delivery, logistics, and service support solutions
+
+Please make these content updates:
+- Keep “Purple Pocket” clearly visible in the header
+- Update the hero section so it clearly communicates real services, not just marketing language
+- Use headline text like: “Mail transportation, delivery, and logistics support you can count on.”
+- Use supporting text like: “Purple Pocket provides mail transportation, delivery, logistics, route operations support, and service coordination for businesses and government contractors.”
+- Keep visible buttons such as “Request Services” and “Contact Us”
+
+Services section:
+Make sure the services section clearly lists:
+- Mail Transportation & Delivery Services
+- Logistics Support Services
+- Route Operations Support
+- Pack-and-Ship Service Support
+- Business Service Coordination
+
+About section:
+Update it to read like a real business description, including reliability, transportation, logistics, service support, and customer-focused operations.
+
+Contact section:
+Make sure the contact section visibly includes:
+- Purple Pocket LLC
+- govtcontracting@purplepocket.com
+- 1509 US HWY 59 S, Linden, TX 75563
+
+Image updates:
+- Replace the current large placeholder graphic/purple box with a more business-like image area using a file from /images if available
+- If no suitable image file exists yet, keep the section visually clean and professional without looking like a placeholder template
+- Use my custom logo file /images/logo.png in the header and footer instead of any icon library logo
+
+Technical requirements:
+- Search all relevant files and update every place where the old icon/logo appears, including header and footer
+- Keep the site responsive
+- Do not break the navigation or layout
+- Keep the code clean and minimal
+- Do not add trademark or legal wording to the visible website
+- Do not add fake testimonials, fake certifications, fake clients, or fake awards
+
+Important:
+After making changes, tell me:
+1. Which files you changed
+2. Whether the white background behind the logo came from CSS or from the image itself
+3. If the logo file needs to be replaced with a transparent PNG

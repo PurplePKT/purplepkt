@@ -129,7 +129,12 @@ export default function Home() {
             className="flex items-center gap-2 cursor-pointer"
             onClick={() => scrollTo("hero")}
           >
-            <img src="/images/logo.png" alt="Purple Pocket Logo" className="h-10 w-auto" />
+            <img
+              src="/images/logo.png"
+              alt="Purple Pocket Logo"
+              className="h-10 w-auto"
+              style={{ mixBlendMode: "multiply" }}
+            />
             <span
               className={`font-serif font-bold text-xl tracking-tight transition-colors ${
                 isScrolled ? "text-foreground" : "text-foreground"
@@ -226,14 +231,12 @@ export default function Home() {
                   Logistics & Service Support
                 </div>
                 <h1 className="text-5xl md:text-7xl font-serif font-bold text-foreground leading-[1.1] mb-6">
-                  Reliable delivery,
-                  <br />
-                  solid support.
+                  Mail transportation, delivery, and logistics support you can count on.
                 </h1>
                 <p className="text-xl text-muted-foreground mb-10 max-w-2xl leading-relaxed">
                   Purple Pocket provides mail transportation, delivery,
-                  logistics, and service support solutions for businesses and
-                  government contractors across the country.
+                  logistics, route operations support, and service coordination
+                  for businesses and government contractors.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Button
@@ -359,28 +362,38 @@ export default function Home() {
                 transition={{ duration: 0.6 }}
                 className="relative"
               >
-                <div className="aspect-[4/5] md:aspect-square bg-muted rounded-2xl overflow-hidden relative border border-border shadow-xl">
-                  {/* Abstract placeholder representing a professional delivery/logistics facility */}
-                  <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-primary/5 mix-blend-multiply" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <img src="/images/logo.png" alt="Purple Pocket Logo" className="h-24 w-auto opacity-60" />
-                  </div>
-                </div>
-
-                {/* Floating badge */}
-                <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-lg border border-border max-w-[240px]">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary shrink-0">
-                      <Truck className="w-6 h-6" />
-                    </div>
+                <div className="rounded-2xl border border-border bg-muted/30 shadow-xl p-8 space-y-6">
+                  <div className="flex items-center gap-3 pb-6 border-b border-border">
+                    <img
+                      src="/images/logo.png"
+                      alt="Purple Pocket Logo"
+                      className="h-12 w-auto"
+                      style={{ mixBlendMode: "multiply" }}
+                    />
                     <div>
-                      <div className="font-bold text-foreground">
-                        Operated by
-                      </div>
-                      <div className="text-sm text-muted-foreground">
-                        Purple Pocket LLC
-                      </div>
+                      <div className="font-serif font-bold text-lg text-foreground">Purple Pocket LLC</div>
+                      <div className="text-sm text-muted-foreground">East Texas, USA</div>
                     </div>
+                  </div>
+                  <div className="space-y-4">
+                    {[
+                      { icon: Mail, label: "Mail Transportation & Delivery" },
+                      { icon: Truck, label: "Logistics Support Services" },
+                      { icon: Map, label: "Route Operations Support" },
+                      { icon: Package, label: "Pack-and-Ship Service Support" },
+                      { icon: BriefcaseBusiness, label: "Business Service Coordination" },
+                    ].map(({ icon: Icon, label }) => (
+                      <div key={label} className="flex items-center gap-3">
+                        <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                          <Icon className="w-4 h-4" />
+                        </div>
+                        <span className="text-sm font-medium text-foreground">{label}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="pt-6 border-t border-border text-xs text-muted-foreground space-y-1">
+                    <p className="font-medium">1509 US HWY 59 S, Linden, TX 75563</p>
+                    <p>govtcontracting@purplepocket.com</p>
                   </div>
                 </div>
               </motion.div>
@@ -444,7 +457,7 @@ export default function Home() {
                         href="mailto:govtcontracting@purplepocket.com"
                         className="text-primary-foreground/70 hover:text-white transition-colors"
                       >
-                        support@purplepkt.com
+                        govtcontracting@purplepocket.com
                       </a>
                     </div>
                   </div>
@@ -556,7 +569,12 @@ export default function Home() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-8 border-b border-muted/20 pb-8">
             <div className="flex items-center gap-2">
-              <img src="/images/logo.png" alt="Purple Pocket Logo" className="h-10 w-auto" />
+              <img
+                src="/images/logo.png"
+                alt="Purple Pocket Logo"
+                className="h-10 w-auto"
+                style={{ filter: "brightness(0) invert(1)" }}
+              />
               <span className="font-serif font-bold text-xl text-white">
                 Purple Pocket
               </span>
