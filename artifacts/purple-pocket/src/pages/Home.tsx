@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Mail,
@@ -600,10 +601,17 @@ export default function Home() {
 
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted/60">
             <p>© 2026 Purple Pocket LLC. All rights reserved.</p>
-            <p>
-              Purple Pocket is a logistics and service brand operated by Purple
-              Pocket LLC.
-            </p>
+            <div className="flex flex-col md:flex-row items-center gap-4">
+              <p>Purple Pocket is a logistics and service brand operated by Purple Pocket LLC.</p>
+              <div className="flex gap-4 shrink-0">
+                <Link href="/privacy-policy" className="hover:text-white transition-colors underline underline-offset-2">
+                  Privacy Policy
+                </Link>
+                <Link href="/terms-of-service" className="hover:text-white transition-colors underline underline-offset-2">
+                  Terms of Service
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </footer>
