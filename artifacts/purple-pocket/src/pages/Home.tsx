@@ -10,11 +10,13 @@ import {
   ArrowRight,
   Menu,
   X,
+  Loader2,
+  CheckCircle2,
+  AlertCircle,
 } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { useToast } from "@/hooks/use-toast";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -43,10 +45,14 @@ const contactFormSchema = z.object({
     .min(10, { message: "Message must be at least 10 characters." }),
 });
 
+type FormStatus = "idle" | "loading" | "success" | "error";
+
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/mrerqbyp";
+
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { toast } = useToast();
+  const [formStatus, setFormStatus] = useState<FormStatus>("idle");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -65,18 +71,26 @@ export default function Home() {
     },
   });
 
-  const onSubmit = (values: z.infer<typeof contactFormSchema>) => {
-    const subject = encodeURIComponent("New Inquiry from Website");
-    const body = encodeURIComponent(
-      `Name: ${values.name}\nEmail: ${values.email}\n\nMessage:\n${values.message}`
-    );
-    window.location.href = `mailto:support@purplepkt.com?subject=${subject}&body=${body}`;
-    toast({
-      title: "Opening Email Client",
-      description:
-        "Your message has been prepared. Please send it from your email client.",
-    });
-    form.reset();
+  const onSubmit = async (values: z.infer<typeof contactFormSchema>) => {
+    setFormStatus("loading");
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+      if (response.ok) {
+        setFormStatus("success");
+        form.reset();
+      } else {
+        setFormStatus("error");
+      }
+    } catch {
+      setFormStatus("error");
+    }
   };
 
   const scrollTo = (id: string) => {
@@ -467,71 +481,115 @@ export default function Home() {
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <Form {...form}>
-                      <form
-                        onSubmit={form.handleSubmit(onSubmit)}
-                        className="space-y-6"
+                    {formStatus === "success" ? (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="flex flex-col items-center justify-center gap-4 py-10 text-center"
                       >
-                        <FormField
-                          control={form.control}
-                          name="name"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel>Name</FormLabel>
-                              <FormControl>
-                                <Input
-                                  placeholder="John Doe"
-                                  {...field}
-                                  className="bg-muted/50"
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                        <FormField
-                          control={form.control}
-                          name="email"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel>Email</FormLabel>
-                              <FormControl>
-                                <Input
-                                  placeholder="john@example.com"
-                                  type="email"
-                                  {...field}
-                                  className="bg-muted/50"
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                        <FormField
-                          control={form.control}
-                          name="message"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel>Message</FormLabel>
-                              <FormControl>
-                                <Textarea
-                                  placeholder="How can we help you?"
-                                  className="min-h-[120px] resize-none bg-muted/50"
-                                  {...field}
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
+                        <CheckCircle2 className="w-12 h-12 text-green-500" />
+                        <p className="text-lg font-medium text-foreground">
+                          Thank you. Your message has been sent to Purple Pocket.
+                        </p>
                         <Button
-                          type="submit"
-                          className="w-full h-12 text-base font-medium"
+                          variant="outline"
+                          className="mt-2"
+                          onClick={() => setFormStatus("idle")}
                         >
-                          Send Message
+                          Send Another Message
                         </Button>
-                      </form>
-                    </Form>
+                      </motion.div>
+                    ) : (
+                      <Form {...form}>
+                        <form
+                          onSubmit={form.handleSubmit(onSubmit)}
+                          className="space-y-6"
+                          noValidate
+                        >
+                          <FormField
+                            control={form.control}
+                            name="name"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>Name</FormLabel>
+                                <FormControl>
+                                  <Input
+                                    placeholder="John Doe"
+                                    disabled={formStatus === "loading"}
+                                    {...field}
+                                    className="bg-muted/50"
+                                  />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                          <FormField
+                            control={form.control}
+                            name="email"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>Email</FormLabel>
+                                <FormControl>
+                                  <Input
+                                    placeholder="john@example.com"
+                                    type="email"
+                                    disabled={formStatus === "loading"}
+                                    {...field}
+                                    className="bg-muted/50"
+                                  />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                          <FormField
+                            control={form.control}
+                            name="message"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>Message</FormLabel>
+                                <FormControl>
+                                  <Textarea
+                                    placeholder="How can we help you?"
+                                    className="min-h-[120px] resize-none bg-muted/50"
+                                    disabled={formStatus === "loading"}
+                                    {...field}
+                                  />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+
+                          {formStatus === "error" && (
+                            <motion.div
+                              initial={{ opacity: 0, y: -4 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              className="flex items-center gap-2 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"
+                            >
+                              <AlertCircle className="w-4 h-4 shrink-0" />
+                              Sorry, there was a problem sending your message. Please try again.
+                            </motion.div>
+                          )}
+
+                          <Button
+                            type="submit"
+                            disabled={formStatus === "loading"}
+                            className="w-full h-12 text-base font-medium"
+                          >
+                            {formStatus === "loading" ? (
+                              <>
+                                <Loader2 className="mr-2 w-4 h-4 animate-spin" />
+                                Sending…
+                              </>
+                            ) : (
+                              "Send Message"
+                            )}
+                          </Button>
+                        </form>
+                      </Form>
+                    )}
                   </CardContent>
                 </Card>
               </motion.div>
